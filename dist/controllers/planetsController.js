@@ -36,17 +36,17 @@ const createPlanet = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     const { name } = req.body;
     const newPlanet = { name };
     yield db.none(`INSERT INTO planets (name) VALUES ($1)`, name);
-    res.status(201).json({ msg: "Planet created successfully" });
+    res.status(201).json({ msg: "Planet created!" });
 });
 const updateById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const { name } = req.body;
     yield db.none(`UPDATE planets SET name=$2 WHERE id=$1`, [id, name]);
-    res.json({ msg: "Planet updated successfully" });
+    res.json({ msg: "Planet updated!" });
 });
 const deleteById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const planetId = req.params.id;
     yield db.none(`DELETE FROM planets WHERE id=$1`, Number(planetId));
-    res.json({ msg: "Planet deleted successfully" });
+    res.json({ msg: "Planet deleted!" });
 });
 export { getAll, getOneById, createPlanet, updateById, deleteById };
