@@ -4,12 +4,12 @@ import passport from "passport";
 import passportJWT from "passport-jwt";
 import { db } from "./db";
 
-const { SECRET } = process.env;
+const { SECRET_KEY } = process.env;
 
 passport.use(
   new passportJWT.Strategy(
     {
-      secretOrKey: SECRET,
+      secretOrKey: SECRET_KEY,
       jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
     },
     async (payload, done) => {
