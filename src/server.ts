@@ -5,6 +5,7 @@ import 'express-async-errors';
 import Joi from 'joi';
 import multer from "multer"
 import {getAll, getOneById, createPlanet, updateById, deleteById, createImage} from "./controllers/planetsController"
+import { logIn, signUp } from './controllers/usersController';
 
 dotenv.config();
 
@@ -52,6 +53,10 @@ app.delete('/api/planets/:id', deleteById);
 app.post("/api/planets/:id/image", upload.single("image"), createImage)
 
 app.use("/uploads", express.static("uploads"))
+
+app.post("/api/users/login", logIn)
+
+app.post("/api/users/signup", signUp)
 
 const port = process.env.PORT;
 
